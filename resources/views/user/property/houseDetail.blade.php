@@ -294,7 +294,7 @@
                                 </div>
 
 
-                                <h3>Nearby Location</h3>
+                                <h2>Nearby Location</h2>
                                 <div class="row">
 
                                     @if($data[0]->nearby_schools!="")
