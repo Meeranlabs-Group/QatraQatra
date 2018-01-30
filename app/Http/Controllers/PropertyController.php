@@ -1008,28 +1008,7 @@ class PropertyController extends Controller
                 ]
 
             );
-            if($files=$request->file('files')){
-                for($i=0;$i<count($files);$i++) {
-                    $photo=new Photo;
-                    $name = $files[$i]->getClientOriginalName();
 
-                    // $name->resize('1200','800');
-
-
-                    if($i==0){
-                        $photo['rank'] = 1;
-                    }
-                    $l=preg_replace("/[^a-zA-Z0-9\s]/","",$request['title']);
-
-                    $path = $files[$i]->move($l, $name);
-
-
-                    $photo['property_id'] = $id;
-                    $photo['path'] = $path;
-
-                    $photo->save();
-                }
-            }
 
 
             $feature['property_id']=$id;
@@ -1164,6 +1143,33 @@ class PropertyController extends Controller
 
 
         $feature->save();
+
+
+        if($files=$request->file('files')){
+            for($i=0;$i<count($files);$i++) {
+                $photo=new Photo;
+                $name = $files[$i]->getClientOriginalName();
+
+                // $name->resize('1200','800');
+
+
+                if($i==0){
+                    $photo['rank'] = 1;
+                }
+                $l=preg_replace("/[^a-zA-Z0-9\s]/","",$request['title']);
+                $l="upload data/".$l;
+                $path = $files[$i]->move($l, $name);
+
+
+
+                $photo['property_id'] = $id;
+                $photo['path'] = $path;
+
+                $photo->save();
+            }
+        }
+
+
         return redirect('/myproperties');
 //        return redirect('/properties');
 
@@ -1231,25 +1237,20 @@ class PropertyController extends Controller
 
         $articles= Blog::all();
 
+        $Property1 =DB::table('property')->select(DB::raw('count(*) as total'),'property.city_id','city.city_name')
+            ->join('city','property.city_id','=','city.id')->groupBy('property.city_id','city.city_name')->get();
 
 
-
-
-        $Property1 =DB::table('property')->select(DB::raw('count(*) as total'),'property.city_id','city.city_name')->join('city','property.city_id','=','city.id')
-            ->groupBy('property.city_id','city.city_name')->get();
-
-
-        $hot=Property::select('city.*','society.*','phase.*','block.*','property.*','photos.*')->where('superhot','=',1)->leftjoin('feature','property.id','=','feature.property_id')->join('city','city.id','=','property.city_id')->join('society','society.id','=','property.society_id')
+        $hot=Property::select('city.*','society.*','phase.*','block.*','property.*','photos.*')->where('superhot','=',1)
+            ->leftjoin('feature','property.id','=','feature.property_id')->join('city','city.id','=','property.city_id')
+            ->join('society','society.id','=','property.society_id')
             ->join('phase','phase.id','=','property.phase_id')->join('block','block.id','=','property.block_id')
 			->leftjoin('photos','property.id','=','photos.property_id')->where('photos.rank','=',1)->get();
 
-        //$photos = Photo::all();
-//print_r($hot);
-//print_r($photos);
+
         $cities= City::all();
 
 
-//      return view('welcome',compact('hot','photos'));
         return view('welcome',compact('hot','Property1','articles','cities'));
     }
 
@@ -1266,14 +1267,34 @@ class PropertyController extends Controller
 // $data=Property::select('property.*')->join('city', 'city.id', '=', 'property.city_id')->join('society','society.id','=','property.society_id')
 //     ->join('phase','phase.id','=','property.phase_id')->join('block','block.id','=','property.block_id')->get();
 //        //$data= Property::find(1)->user;
-        $data=Property::select('feature.*','city.*','society.*','phase.*','block.*','property.*')->where('property.user_id','=',$id)->where('ad_status','!=',2)->leftjoin('feature','property.id','=','feature.property_id')->
-        join('city','city.id','=','property.city_id')->join('society','society.id','=','property.society_id')
+
+
+        $data=Property::select('city.*','society.*','phase.*','block.*','property.*')->with('photo')->with('feature')
+        ->where('property.user_id','=',$id)->where('ad_status','!=',2)
+
+        ->join('city','city.id','=','property.city_id')->join('society','society.id','=','property.society_id')
+
+//            ->leftjoin('photos','property.id','=','photos.property_id')
             ->join('phase','phase.id','=','property.phase_id')->join('block','block.id','=','property.block_id')->paginate(8);
 
 
 
-        return view('user.property.myproperties',compact('data','photos','result'));
+//print_r($data);
 
+print_r($data[0]);
+
+//        foreach($data as $d){
+//
+//            echo $d->title;
+//
+//        }
+
+
+//                return view('user.property.myproperties',compact('data','photos','result'));
+
+
+//        $var=Property::with('photo')->get();
+//        print_r($data);
     }
 
     public function propertydetail($id){
@@ -1346,7 +1367,6 @@ class PropertyController extends Controller
         if ($opt == "Warehouses"){
             return view('user.property.warehouse_detail',compact('data','photos','cites','sidesearch'));
         }
-
 
         if ($opt == "Other") {
             return view('user.property.other_detail', compact('data', 'photos', 'cites','sidesearch'));

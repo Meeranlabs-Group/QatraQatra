@@ -21,30 +21,38 @@ class Property extends Model
 
 
     public function feature(){
-        $this->hasOne('App\Feature');
+       return $this->hasOne('App\Feature');
     }
 
 
 
     public function city(){
-        $this->hasOne('App\City');
+        return $this->belongsTo('App\Property');
+//        return $this->hasOne('App\City');
     }
 
     public function society(){
-        $this->hasOne('App\Society');
+
+        return $this->belongsTo('App\Property');
+//        return $this->hasOne('App\Society');
+
     }
     public function phase(){
-        $this->hasOne('App\Phase');
+
+        return $this->belongsTo('App\Property');
+//        return    $this->hasOne('App\Phase');
     }
     public function block(){
-        $this->hasOne('App\Block');
+
+        return $this->belongsTo('App\Property');
+//        return        $this->hasOne('App\Block');
     }
 
 
 
 
     public function photo(){
-        $this->hasMany('App\Photo');
+        return $this->hasMany('App\Photo');
     }
     public function getid(){
         return $this->id;

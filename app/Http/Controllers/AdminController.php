@@ -27,33 +27,32 @@ class AdminController extends Controller
         $oldsale=Property::where('purpose','=','Sale')->where('status','=',1)->count();
         $oldrent=Property::where('purpose','=','Rent')->where('status','=',1)->count();
 
-
-
-
         //        New Properties
         $newsale=Property::where('purpose','=','Sale')->where('status','=',0)->count();
         $newrent=Property::where('purpose','=','Rent')->where('status','=',0)->count();
 
 
-        //        $deletedproperties=Property::where('ad_status','=',2)->count();
 
 
 
-//        $saletype=Property::where('purpose','=','Sale')->where('ad_status','=',1);
-//        $renttype=Property::where('purpose','=','Rent')->where('ad_status','=',1);
 
-
-//        $approved=Blog::where('user_id','=',$id)->where('status','=',1)->count();
-//        $disapproved=Blog::where('user_id','=',$id)->where('status','=',0)->count();
-//        $allArticle=Blog::where('user_id','=',$id)->count();
-
+        $sale=Property::where('user_id','=',$id)->where('purpose','=','Sale')->count();
+        $rent=Property::where('user_id','=',$id)->where('purpose','=','Rent')->count();
+        $approved=Blog::where('user_id','=',$id)->where('status','=',1)->count();
+        $disapproved=Blog::where('user_id','=',$id)->where('status','=',0)->count();
+        $allArticle=Blog::where('user_id','=',$id)->count();
+        $deleted=Property::where('user_id','=',$id)->where('ad_status','=',2)->count();
 
 
 //        $propertytype=Property::where('user_id','=',$id)->where('purpose','=','Sale')->count();
+//        return Array($sale,$rent,$approved,$disapproved,$allArticle,$deleted);
+
 
         return Array($oldsale,$oldrent,$newsale,$newrent);
 
     }
+
+
     public function aboutus(){
         $agents=Agent::all();
         $photos = Photo::all();

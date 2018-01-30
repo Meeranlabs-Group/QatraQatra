@@ -50,4 +50,8 @@ $deleted=Property::where('user_id','=',$id)->where('ad_status','=',2)->count();
 
     }
 
+
+
+
+
 }
