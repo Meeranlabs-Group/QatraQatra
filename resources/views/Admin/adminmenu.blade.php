@@ -15,29 +15,31 @@
             <div class="wrapper">
 
                 <!--end section-->
-                <section>
-                    <h2>Users</h2><hr>
-                    <ul class="checkboxes">
+                {{--<section>--}}
+                    {{--<h2>Users</h2><hr>--}}
+                    {{--<ul class="checkboxes">--}}
 
-                        <li><label><a href=" "><h3>Individual<span>67</span></h3></a></label></li>
+                        {{--<li><label><a href=" "><h3>Individual<span>67</span></h3></a></label></li>--}}
 
 
-                        <li><label><a href=" "><h3>Individual<span>67</span></h3></a></label></li>
-                        <li><label><a name="hotel"><h3>Agent<span>67</span></h3></a></label></li>
+                        {{--<li><label><a href=" "><h3>Individual<span>67</span></h3></a></label></li>--}}
+                        {{--<li><label><a name="hotel"><h3>Agent<span>67</span></h3></a></label></li>--}}
                         {{--<li><label><a name="hotel"><h3>Employee<span>67</span></h3></a></label></li>--}}
                         {{--<li><label><a name="hotel"><h3>Add Property</h3></a></label></li>--}}
-                    </ul>
+                    {{--</ul>--}}
 
 
-                    <!--end checkboxes-->
-                </section>
+                    {{--<!--end checkboxes-->--}}
+                {{--</section>--}}
 
 
                 <section>
                     <h2>Pending Properties</h2><hr>
                     <ul class="checkboxes">
-                        <li><label><a href="/pendingRent"><h3>Rent<span>{{ $result[3] }}</span></h3></a></label></li>
-                        <li><label><a href="/pendingSale"><h3>Sale<span>{{ $result[2] }}</span></h3></a></label></li>
+                        <li><label><a href="/pendingSale"><h3>Sale<span>{{ $result[0] }}</span></h3></a></label></li>
+                        <li><label><a href="/pendingRent"><h3>Rent<span>{{ $result[1] }}</span></h3></a></label></li>
+
+
                         {{--<li><label><a name="hotel"><h3>Deleted<span>67</span></h3></a></label></li>--}}
                         {{--<li><label><a name="hotel"><h3>Add Property</h3></a></label></li>--}}
                     </ul>
@@ -49,8 +51,8 @@
                 <section>
                     <h2>Old Properties</h2><hr>
                     <ul class="checkboxes">
-                        <li><label><a href="/oldRent"><h3>Rent<span>{{ $result[1] }}</span></h3></a></label></li>
-                        <li><label><a href="/oldSale"><h3>Sale<span>{{ $result[0] }}</span></h3></a></label></li>
+                        <li><label><a href="/oldSale"><h3>Sale<span>{{ $result[2] }}</span></h3></a></label></li>
+                        <li><label><a href="/oldRent"><h3>Rent<span>{{ $result[3] }}</span></h3></a></label></li>
                         {{--<li><label><a name="hotel"><h3>Deleted<span>67</span></h3></a></label></li>--}}
                         {{--<li><label><a name="hotel"><h3>Add Property</h3></a></label></li>--}}
                     </ul>

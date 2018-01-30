@@ -36,12 +36,12 @@ Route::get('/adminpage',function(){
 Route::get('/adminpage','AdminController@mainpage');
 
 
-Route::get('/pendingRent','AdminController@pendingRent');
 Route::get('/pendingSale','AdminController@pendingSale');
+Route::get('/pendingRent','AdminController@pendingRent');
 
 
-Route::get('/oldRent','AdminController@oldRent');
 Route::get('/oldSale','AdminController@oldSale');
+Route::get('/oldRent','AdminController@oldRent');
 
 
 

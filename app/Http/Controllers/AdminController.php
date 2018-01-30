@@ -23,32 +23,32 @@ class AdminController extends Controller
 
 //        $id= Auth::user()->getid();
 
-        //        Old Properties
-        $oldsale=Property::where('purpose','=','Sale')->where('status','=',1)->count();
-        $oldrent=Property::where('purpose','=','Rent')->where('status','=',1)->count();
+
 
         //        New Properties
-        $newsale=Property::where('purpose','=','Sale')->where('status','=',0)->count();
-        $newrent=Property::where('purpose','=','Rent')->where('status','=',0)->count();
+        $newsale=Property::where('purpose','=','Sale')->where('ad_status','=',0)->count();
+        $newrent=Property::where('purpose','=','Rent')->where('ad_status','=',0)->count();
 
 
 
+        //        Old Properties
+        $oldsale=Property::where('purpose','=','Sale')->where('ad_status','=',1)->count();
+        $oldrent=Property::where('purpose','=','Rent')->where('ad_status','=',1)->count();
 
 
-
-        $sale=Property::where('user_id','=',$id)->where('purpose','=','Sale')->count();
-        $rent=Property::where('user_id','=',$id)->where('purpose','=','Rent')->count();
-        $approved=Blog::where('user_id','=',$id)->where('status','=',1)->count();
-        $disapproved=Blog::where('user_id','=',$id)->where('status','=',0)->count();
-        $allArticle=Blog::where('user_id','=',$id)->count();
-        $deleted=Property::where('user_id','=',$id)->where('ad_status','=',2)->count();
-
+//        $sale=Property::where('user_id','=',$id)->where('purpose','=','Sale')->count();
+//        $rent=Property::where('user_id','=',$id)->where('purpose','=','Rent')->count();
+//        $approved=Blog::where('user_id','=',$id)->where('status','=',1)->count();
+//        $disapproved=Blog::where('user_id','=',$id)->where('status','=',0)->count();
+//        $allArticle=Blog::where('user_id','=',$id)->count();
+//        $deleted=Property::where('user_id','=',$id)->where('ad_status','=',2)->count();
+//
 
 //        $propertytype=Property::where('user_id','=',$id)->where('purpose','=','Sale')->count();
 //        return Array($sale,$rent,$approved,$disapproved,$allArticle,$deleted);
 
 
-        return Array($oldsale,$oldrent,$newsale,$newrent);
+        return Array($newsale,$newrent,$oldsale,$oldrent);
 
     }
 
@@ -74,6 +74,16 @@ class AdminController extends Controller
         return view('Admin.adminpage',compact('result'));
 
     }
+    public function pendingSale(){
+
+        $result=$this->adminmenu();
+        $user=Property::select('property.*')->where('purpose','=','Sale')
+            ->where('ad_status','=','0')->orderBy('created_at','desc')->paginate(10);
+
+        $photos = Photo::all();
+
+        return view('Admin.propertieslist',compact('result','photos','user'));
+    }
     public function pendingRent(){
 
         $result=$this->adminmenu();
@@ -81,41 +91,32 @@ class AdminController extends Controller
        // $properties=Property::where('purpose','=','Rent')->where('status','=','0')->get();
 
         $user=Property::select('property.*')->where('purpose','=','Rent')
-            ->where('status','=','0')->join('users', 'users.id', '=', 'property.user_id')->paginate(10);
+            ->where('ad_status','=','0')->orderBy('created_at','desc')->paginate(10);
 
         $photos = Photo::all();
 
         return view('Admin.propertieslist',compact('result','photos','user'));
 
     }
-    public function pendingSale(){
-
-        $result=$this->adminmenu();
-        $user=Property::select('property.*')->where('purpose','=','Sale')
-            ->where('status','=','0')->join('users', 'users.id', '=', 'property.user_id')->paginate(10);
-
-        $photos = Photo::all();
-
-        return view('Admin.propertieslist',compact('result','photos','user'));
 
 
-    }
-    public function oldRent(){
-        $result=$this->adminmenu();
-        $user=Property::select('property.*')->where('purpose','=','Rent')
-            ->where('status','=','1')->join('users', 'users.id', '=', 'property.user_id')->paginate(10);
-        $photos = Photo::all();
-        return view('Admin.propertieslist',compact('result','photos','user'));
 
-    }
     public function oldSale(){
 
 
         $result=$this->adminmenu();
         $user=Property::select('property.*')->where('purpose','=','Sale')
-            ->where('status','=','1')->join('users', 'users.id', '=', 'property.user_id')->paginate(10);
+            ->where('ad_status','=','1')->orderBy('superhot','desc')->paginate(10);
         $photos = Photo::all();
-        print_r($user);
+        return view('Admin.propertieslist',compact('result','photos','user'));
+
+    }
+
+    public function oldRent(){
+        $result=$this->adminmenu();
+        $user=Property::select('property.*')->where('purpose','=','Rent')
+            ->where('ad_status','=','1')->orderBy('superhot','desc')->paginate(10);
+        $photos = Photo::all();
         return view('Admin.propertieslist',compact('result','photos','user'));
 
     }
