@@ -71,18 +71,6 @@
             </div>
 
 
-
-        {{--<div class="form-group-inline">--}}
-        {{--<div class="form-group">--}}
-        {{--<h3>Price<i class="fa fa-question-circle tooltip-question" data-toggle="tooltip" data-placement="right" title="Choose Price"></i></h3>--}}
-        {{--</div>--}}
-        {{--<div class="form-group width-60">--}}
-        {{--<input type="number" class="form-control" id="minimum-stay" name="minimum_stay" placeholder="2">--}}
-        {{--</div>--}}
-        {{--<!--end form-group-->--}}
-        {{--</div>--}}
-        <!--end form-group-inline-->
-            {{--<a href="#" class="link icon"><i class="fa fa-plus"></i>Add Room Type</a>--}}
         </div>
         <!--end col-md-5-->
     </div>

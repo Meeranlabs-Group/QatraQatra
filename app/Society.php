@@ -9,16 +9,16 @@ class Society extends Model
     //
 
     protected $table='society';
-    public function city(){
 
-        return $this->belongsTo('App\City');
+
+    public function societyname(){
+        return $this->hasMany('App\Property');
     }
 
 
 
-
-    public function phase(){
-
-        return $this->hasMany('App\Phase');
-    }
+//    public function phase(){
+//
+//        return $this->hasMany('App\Phase');
+//    }
 }

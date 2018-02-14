@@ -13,7 +13,7 @@
                     <select class="framed width-100" name="city" id="city">
 
 
-                        <option selected value="{{ $feature[0] -> city_id }}">{{ $feature[0]->city_name }}</option>
+                        <option selected value="{{ $feature[0]-> city_id }}">{{ $feature[0]->city->city_name }}</option>
                         <option value="" disabled="">Select City</option>
 
                         @foreach($cities as $city)
@@ -32,7 +32,7 @@
                     <label for="address-autocomplete">Society</label>
 
                     <select class="framed width-100" name="society" id="society">
-                        <option selected value="{{ $feature[0]->society_id }}">{{ $feature[0]->society_name }}</option>
+                        <option selected value="{{ $feature[0]->society_id }}">{{ $feature[0]->society->society_name }}</option>
                         <option value="" disabled="">->Select Society</option>
                         {{--@foreach($societies as $society)--}}
                         {{--where ($society->city_id == ) --}}
@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label for="address-autocomplete">Phase</label>
                     <select class="framed width-100" name="Phase" id="Phase">
-                        <option selected value="{{ $feature[0]->phase_id}}">{{ $feature[0]->phase_name}}</option>
+                        <option selected value="{{ $feature[0]->phase_id}}">{{ $feature[0]->phase->phase_name}}</option>
                         <option value="" disabled="">->Select Phase</option>
 
                     </select>
@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <label for="address-autocomplete">Block</label>
                     <select class="framed width-100" name="block" id="block">
-                        <option selected value="{{ $feature[0]->block_id }}">{{ $feature[0]->block_name}}</option>
+                        <option selected value="{{ $feature[0]->block_id }}">{{ $feature[0]->block->block_name}}</option>
                         <option value="" disabled="">->Select Block</option>
 
                     </select>

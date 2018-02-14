@@ -35,35 +35,7 @@
 
 
                 <div class="main-content">
-                    <div class="title">
-                        <div class="left">
-                            <h1>{{ucfirst($data[0]->title)}}</h1>
-                            <h3><a href="#">{{$data[0]->block_name}}</a> - <a href="#">{{$data[0]->phase_name}}</a> - <a href="#">{{$data[0]->society_name}}</a> - <a href="#">{{$data[0]->city_name}}</a>(63 properties)</h3>
-                        </div>
-
-                        <div class="right">
-                            <a href="#map" class="icon scroll"><i class="fa fa-map-marker"></i>See on the map</a>
-                           	 @include('user.property.phone_detail')
-                        </div>
-                    </div>
-                    <!--end title-->
-                    <section id="gallery">
-                        <div class="gallery-detail">
-                            <div class="ribbon"><div class="offer-number">{{$data[0]->purpose}}</div></div>
-
-                            <div class="one-item-carousel">
-
-                        @foreach($photos as $photo)
-                                <div class="image">
-
-                                    <img src="{{ asset($photo->path)  }}" alt="">
-                                </div>
-                        @endforeach
-
-
-                            </div>
-                        </div>
-                    </section>
+                    @include('user.property.title&gallery')
                     <h2>Description</h2>
                     <div class="row">
                         <div class="col-md-8">
@@ -80,7 +52,7 @@
 <div class="row">
 
 
-    @if($data[0]->possesion!="")
+    @if($data[0]->feature->possesion!="")
         <div class="col-md-4 col-sm-4">
             <div class="feature">
                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Possesion</h5>
@@ -90,7 +62,7 @@
     @endif
 
 
-        @if($data[0]->corner!="")
+        @if($data[0]->feature->corner!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
                     <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Corner Plot</h5>
@@ -99,7 +71,7 @@
             </div>
         @endif
 
-            @if($data[0]->park_facing!="")
+            @if($data[0]->feature->park_facing!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
                     <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Front of Park</h5>
@@ -109,7 +81,7 @@
         @endif
 
 
-        @if($data[0]->disputed!="")
+        @if($data[0]->feature->disputed!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
                     <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Disputed</h5>
@@ -117,7 +89,7 @@
                 <!--end feature-->
             </div>
         @endif
-        @if($data[0]->file!="")
+        @if($data[0]->feature->file!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
                     <h5><i class="icon_box-checked" style="color: #1fad83"> </i>File</h5>
@@ -127,7 +99,7 @@
         @endif
 
 
-    @if($data[0]->balloted!="")
+    @if($data[0]->feature->balloted!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
                     <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Balloted</h5>
@@ -136,7 +108,7 @@
             </div>
         @endif
 
-        @if($data[0]->sewerage!="")
+        @if($data[0]->feature->sewerage!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
                     <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Sewerage</h5>
@@ -144,7 +116,7 @@
                 <!--end feature-->
             </div>
         @endif
-        @if($data[0]->electricity!="")
+        @if($data[0]->feature->electricity!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
                     <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Electricity Available</h5>
@@ -154,7 +126,7 @@
         @endif
 
 
-        @if($data[0]->water_supply!="")
+        @if($data[0]->feature->water_supply!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
                     <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Water Supply</h5>
@@ -163,7 +135,7 @@
             </div>
         @endif
 
-        @if($data[0]->sui_gas!="")
+        @if($data[0]->feature->sui_gas!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
                     <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Sui Gas</h5>
@@ -171,7 +143,7 @@
                 <!--end feature-->
             </div>
         @endif
-        @if($data[0]->boundry_wall!="")
+        @if($data[0]->feature->boundry_wall!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
                     <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Boundry Wall</h5>
@@ -182,10 +154,10 @@
 
 
 
-        @if($data[0]->other_plot_features!="")
+        @if($data[0]->feature->other_plot_features!="")
             <div class="col-md-4 col-sm-4">
                 <div class="feature">
-                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Plot Features: <strong>{{$data[0]->other_plot_features}}</strong></h5>
+                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Plot Features: <strong>{{$data[0]->feature->other_plot_features}}</strong></h5>
                 </div>
                 <!--end feature-->
             </div>
@@ -200,66 +172,12 @@
 
                      <h2>Nearby Location</h2>
 
-                                <div class="row">
-
-
-                                    @if($data[0]->nearby_schools!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"></i>Nearby Schools</h5>
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-                                    @if($data[0]->nearby_hospitals!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"></i>Nearby Hospitals</h5>
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-                                    @if($data[0]->nearby_shopping_malls!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"></i>Nearby Shopping Malls</h5>
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-                                    @if($data[0]->nearby_restaurants!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"></i>Nearby Restaurants</h5>
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-                                    @if($data[0]->nearby_public_transport!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"></i>Nearby Public Transport Service</h5>
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-
-                                    @if($data[0]->distance_from_airport_kms!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"></i>Distance From Airport <strong>{{$data[0]->distance_from_airport_kms}}</strong></h5>
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-
-
-                                </div>
+                                @include('user.property.nearbylocation')
 
                         <h2>Other Facilities</h2>
 <div class="row">
 
-                                @if($data[0]->security_staff!="")
+                                @if($data[0]->feature->security_staff!="")
                                     <div class="col-md-4 col-sm-4">
                                         <div class="feature">
                                             <h5><i class="icon_box-checked" style="color: #1fad83"></i>Security Staff</h5>
@@ -268,10 +186,10 @@
                                     </div>
                                 @endif
 
-                                @if($data[0]->facilities!="")
+                                @if($data[0]->feature->facilities!="")
                                     <div class="col-md-4 col-sm-4">
                                         <div class="feature">
-                                            <h5><i class="icon_box-checked" style="color: #1fad83"></i>Other Facilities <strong>{{$data[0]->facilities}}</strong></h5>
+                                            <h5><i class="icon_box-checked" style="color: #1fad83"></i>Other Facilities <strong>{{$data[0]->feature->facilities}}</strong></h5>
                                         </div>
                                         <!--end feature-->
                                     </div>

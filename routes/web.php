@@ -43,10 +43,12 @@ Route::get('/pendingRent','AdminController@pendingRent');
 Route::get('/oldSale','AdminController@oldSale');
 Route::get('/oldRent','AdminController@oldRent');
 
+Route::post('/statusUpdate','AdminController@update');
 
 
 
 /*
+|
 |--------------------------------------------------------------------------
 | User Blog Routes
 |--------------------------------------------------------------------------

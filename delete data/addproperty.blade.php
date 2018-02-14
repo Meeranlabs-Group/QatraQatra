@@ -203,9 +203,9 @@
                                 <button type="submit" class="btn btn-primary btn-rounded btn-xlarge">Submit Now</button>
                             </div>
                         </section>
-                        <section>
-                            <div class="center"><a href="#" class="btn btn-framed btn-default btn-rounded">Preview</a></div>
-                        </section>
+                        {{--<section>--}}
+                            {{--<div class="center"><a href="#" class="btn btn-framed btn-default btn-rounded">Preview</a></div>--}}
+                        {{--</section>--}}
                     </div>
                 {!! Form::close() !!}
                 <!--end form-->

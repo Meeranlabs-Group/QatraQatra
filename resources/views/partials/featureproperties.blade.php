@@ -13,12 +13,12 @@
 
               
 
-                        <a href="propertydetail/{{ $data->slug}}"><div class="image"><img height="191px;width:255px;" src= "{{ $data->path }}" alt=""></div></a>
+                        <a href="propertydetail/{{ $data->slug}}"><div class="image"><img height="191px;width:255px;" src= "{{ $data['photos1'][0]->path}}" alt=""></div></a>
                  
 
                 <div class="description">
                     <a href="propertydetail/{{ $data->slug }}"><h3> {{ str_limit(ucfirst($data->title) , $limit = 20, $end = '...') }}   </h3></a>
-                    <figure>{{$data->society_name}},{{ $data->city_name }}</figure>
+                    <figure>{{$data->society->society_name}},{{ $data->city->city_name }}</figure>
 
                     <figure class="label label-InProcess">{{ $data->purpose }}</figure>
                     <figure class="label label-InProcess">{{ $data->property_type }}</figure>

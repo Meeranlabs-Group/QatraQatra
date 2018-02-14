@@ -14,21 +14,14 @@
                         <div class="form-group width-80">
                             <label>Built in Year</label>
                             <select  name="Built_in_Year" class="framed width-80">
-
                                 <?php
                                 for($i = 1990 ; $i <= date('Y'); $i++){
                                     echo "<option value=".$i.">".$i."</option>";
                                 }
                                 ?>
-
                             </select>
-
-
                         </div>
                     </div>
-
-
-                    {{--<li><label><input type="text" name="Built_in_Year">Built in Year</label></li>--}}
 
 
                     <div class="col-md-3">
@@ -66,7 +59,7 @@
                     </div>
 
                     <div class="col-md-3">
-                        <div class="form-group width-80">2
+                        <div class="form-group width-80">
                             <label>Electricity Backup</label>
                             <select name="Electricity_Backup_type" class="framed width-80">
                                 <option value="None">None</option>
@@ -117,13 +110,7 @@
 
 
 
-                    <div class="col-md-3">
-                        <div class="form-group width-80">
-                            <label>View</label>
-                            <input type="text" name="View">
 
-                        </div>
-                    </div>
 
 
 
@@ -256,7 +243,7 @@
                     <li><label>Number of Rooms</label></li>
                     <li><div class="form-group width-60">
 
-                            <input type="text" name="Number_of_Rooms">
+                            <input type="text" name="Number_of_Store_Rooms">
                         </div></li>
                     <li><label>Number of Servant Quarters</label></li>
                     <li><div class="form-group width-60">
@@ -306,17 +293,18 @@
 
                         <div class="form-group width-40">
                             <li>  <label>Pet Policy</label> </li>
-                            <select  name="Pet_Policy_type" class="framed width-80">
+                            <li><div class="form-group width-60">
 
-
-                                <option value="Pet_Policy_Allowed">Allowed</option>
-                                <option value="Pet_Policy_Not_Allowed">Not Allowed</option>
-
-                            </select>
+                                    <select name="Pet_Policy_type">
+                                        <option value="Pet_Policy_Allowed">Allowed</option>
+                                        <option value="Pet_Policy_Not_Allowed">Not Allowed</option>
+                                    </select>
+                                </div>
+                            </li>
                         </div>
 
 
-                    <div class="clearfix"></div>
+                    {{--<div class="clearfix"></div>--}}
                     <li><label>Other Facilities</label></li>
                    <div class="form-group width-30">
 
@@ -332,20 +320,7 @@
         </div>
 
 
-        {{--<div class="col-md-6">--}}
-            {{--<h3>Rooms</h3>--}}
-            {{--<ul class="checkboxes inline half list-unstyled">--}}
-                {{----}}
-                {{--<li><label><input type="text" name="Number_of_Rooms">Number of Rooms</label></li>--}}
-                {{--<li><label><input type="text" name="Number_of_Servant_Quarters">Number of Servant Quarters</label></li>--}}
-                {{--<li><label><input type="text" name="Other_Rooms">Other Rooms</label></li>--}}
-                {{----}}
-                {{--</ul>--}}
-            {{--<!--end checkboxes-->--}}
-        {{--</div>--}}
-        <!--end col-md-4-->
 
-        <!--end col-md-4-->
     </div>
     <!--end row-->
 </section>

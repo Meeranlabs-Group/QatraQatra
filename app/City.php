@@ -11,18 +11,18 @@ class City extends Model
 
     protected $table='city';
 
-    public function property(){
 
-//        return $this->belongsTo('App\Property');
-
-        return $this->hasOne('App\City');
+    public function cityname(){
+         return $this->hasMany('App\Property');
     }
 
 
-    public function society(){
+//    public function society(){
+//
+//        return $this->hasMany('App\Society');
+//    }
 
-        return $this->hasMany('App\Society');
-    }
+
 
 
 }

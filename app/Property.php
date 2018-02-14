@@ -26,34 +26,42 @@ class Property extends Model
 
 
 
+
     public function city(){
-        return $this->belongsTo('App\Property');
-//        return $this->hasOne('App\City');
+        return $this->belongsTo('App\City');
     }
-
     public function society(){
-
-        return $this->belongsTo('App\Property');
-//        return $this->hasOne('App\Society');
-
+        return $this->belongsTo('App\Society');
     }
     public function phase(){
-
-        return $this->belongsTo('App\Property');
-//        return    $this->hasOne('App\Phase');
+        return $this->belongsTo('App\Phase');
     }
     public function block(){
-
-        return $this->belongsTo('App\Property');
-//        return        $this->hasOne('App\Block');
+        return $this->belongsTo('App\Block');
     }
 
 
 
 
-    public function photo(){
+
+
+
+    public function photos(){
         return $this->hasMany('App\Photo');
     }
+ public function photo(){
+        return $this->hasMany('App\Photo');
+    }
+
+    public function photos1(){
+        return $this->hasMany('App\Photo')->where('rank','=',1);
+    }
+
+
+
+
+
+
     public function getid(){
         return $this->id;
     }

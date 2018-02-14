@@ -12,13 +12,16 @@
 
                 <div class="gallery">
 
-                    @foreach($photos as $photo)
-                        @if($photo->property_id == $data->id )
-                            <img src="{{ asset($photo->path)  }}" style="width:250px;height: 200px;"  alt="">
-                        @endif
-                        {{--<img src="#" class="owl-lazy" alt="" data-src="assets/img/items/02.jpg">--}}
-                        {{--<img src="#" class="owl-lazy" alt="" data-src="assets/img/items/03.jpg">--}}
-                    @endforeach
+                    {{--@foreach($photos as $photo)--}}
+                        {{--@if($photo->property_id == $data->id )--}}
+                            {{--<img src="{{ asset($photo->path)  }}" style="width:250px;height: 200px;"  alt="">--}}
+                        {{--@endif--}}
+                    {{--@endforeach--}}
+
+                        @foreach($data->photo as $photo)
+                                <img src="{{asset($photo->path)}}" style="width:250px;height: 200px;"  alt="">
+                        @endforeach
+
                 </div>
             </a>
             <div class="map-item">
@@ -32,11 +35,12 @@
     </div>
     <!--end image-->
     <div class="description">
-		@if($data->property_type=="Houses"||$data->property_type=="Flates" ||$data->property_type=="Upper-Portions" ||$data->property_type=="Lower-Portions"  ||$data->property_type=="Farms-House")
+		@if($data->property_type=="Houses"||$data->property_type=="Flates" ||$data->property_type=="Upper-Portions"
+		 ||$data->property_type=="Lower-Portions"  ||$data->property_type=="Farms-House")
 		
         <div class="meta">
-            <span><i class="fa fa-bed"></i>{{ $data->number_of_bedrooms }}</span>
-            <span><i class="fa fa-bath"></i>{{ $data->number_of_bathrooms }}</span>
+            <span><i class="fa fa-bed"></i>{{ $data->feature->number_of_bedrooms }}</span>
+            <span><i class="fa fa-bath"></i>{{ $data->feature->number_of_bathrooms }}</span>
         </div>
 		
 		@endif
@@ -51,14 +55,11 @@
 
 
 
-            @if($data->society_name == 'Other')
+            @if($data->society->society_name == 'Other')
                 <figure class="location">{{ $data->address }}</figure>
             @else
-                <figure class="location">{{ $data->block_name }}, {{ $data->phase_name }}, {{ $data->society_name }}, {{ $data->city_name }}</figure>
+                <figure class="location">{{ $data->block->block_name }}, {{ $data->phase->phase_name }}, {{ $data->society->society_name }}, {{ $data->city->city_name }}</figure>
             @endif
-            {{--<figure class="label label-info">{{ $data->property_type }}</figure>--}}
-            {{--<figure class="label label-success">{{$data->unit_size}} {{$data->unit_type}}</figure>--}}
-            {{--<h6 class="label label-danger">PKR-{{ nice_number($data->price) }}</h6>--}}
 
             <figure class="label label-InProcess">{{ $data->purpose }}</figure>
             <figure class="label label-primary">{{ $data->property_type }}</figure>
@@ -124,7 +125,7 @@
 	</div>
 				
 
-            <a href="{{ URL::to('/') . '/propertydetail/' . $data->slug }}"  class="btn btn-rounded btn-small btn-default btn-framed" >View detail</a>
+            <a href="{{ URL::to('/').'/propertydetail/'.$data->slug }}"  class="btn btn-rounded btn-small btn-default btn-framed" >View detail</a>
         </div>
         <!--end info-->
     </div>

@@ -8,4 +8,9 @@
        <input type="file" name="files[]" class="file-upload-input with-preview" multiple title="click add files " maxlength="30" accept="gif|jpg|png|jpeg||jpe" >
         <span>Click to add images</span>
     </div>
+
+
+
+
+
 </section>

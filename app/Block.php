@@ -9,10 +9,16 @@ class Block extends Model
     //
     protected $table='block';
 
-    public function phase(){
 
-        return $this->belongsTo('App\Phase');
+    public function blockname(){
+        return $this->hasMany('App\Property');
     }
+
+
+//    public function phase(){
+//
+//        return $this->belongsTo('App\Phase');
+//    }
 }
 
 

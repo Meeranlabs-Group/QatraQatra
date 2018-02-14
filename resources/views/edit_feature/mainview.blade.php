@@ -63,33 +63,6 @@
 
                             <option value="{{ $feature[0]->property_type }}" selected>{{ $feature[0]->property_type }}</option>
 
-                            {{--<option value="" disabled>  --- HOUSE --- </option>--}}
-
-
-                            {{--<option value="Houses" >  Houses</option>--}}
-
-                            {{--<option value="Flates">  Flates</option>--}}
-
-                            {{--<option value="Upper-Portions">  Upper Portions</option>--}}
-                            {{--<option value="Lower-Portions">  Lower Portions</option>--}}
-                            {{--<option value="Farms-House">  Farms House</option>--}}
-                            {{--<option value="Rooms">  Rooms</option>--}}
-
-                            {{--<option value="" disabled>  --- PLOTS ---</option>--}}
-                            {{--<option value="Residential-Plots">  Residential Plots</option>--}}
-                            {{--<option value="Commercial-Plots">  Commercial Plots</option>--}}
-                            {{--<option value="Agricultural-Land">  Agricultural Land</option>--}}
-                            {{--<option value="Industrial-Land">  Industrial Land</option>--}}
-                            {{--<option value="Plot-Files">  Plot Files</option>--}}
-                            {{--<option value="Plot-Forms">  Plot Forms</option>--}}
-
-                            {{--<option value="" disabled>  --- COMMERCIAL ---</option>--}}
-                            {{--<option value="Offices">  Offices</option>--}}
-                            {{--<option value="Shops">  Shops</option>--}}
-                            {{--<option value="Warehouses">  Warehouses</option>--}}
-                            {{--<option value="Factories">  Factories</option>--}}
-                            {{--<option value="Buildings">  Buildings</option>--}}
-                            {{--<option value="Other">  Other</option>--}}
 
                         </select>
                     </div>

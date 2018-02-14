@@ -11,61 +11,61 @@
             <ul class="checkboxes inline half list-unstyled">
 
 
-                @if($feature[0]->possesion)
+                @if($feature[0]->feature->possesion)
                     <li><label><input type="checkbox" checked  name="Possesion">Possesion</label></li>
                 @else
                     <li><label><input type="checkbox" name="Possesion">Possesion</label></li>
                 @endif
 
-                    @if($feature[0]->disputed)
+                    @if($feature[0]->feature->disputed)
                         <li><label><input type="checkbox" checked  name="Disputed">Disputed</label></li>
                     @else
                         <li><label><input type="checkbox" name="Disputed">Disputed</label></li>
                     @endif
 
-                    @if($feature[0]->electricity)
+                    @if($feature[0]->feature->electricity)
                         <li><label><input type="checkbox" checked  name="Electricity">Electricity</label></li>
                     @else
                         <li><label><input type="checkbox" name="Electricity">Electricity</label></li>
                     @endif
 
-                    @if($feature[0]->sui_gas)
+                    @if($feature[0]->feature->sui_gas)
                         <li><label><input type="checkbox" checked  name="Sui_Gas">Sui Gas</label></li>
                     @else
                         <li><label><input type="checkbox" name="Sui_Gas">Sui Gas</label></li>
                     @endif
 
-                    @if($feature[0]->Irrigation)
+                    @if($feature[0]->feature->Irrigation)
                         <li><label><input type="checkbox" checked  name="Irrigation">Irrigation</label></li>
                     @else
                         <li><label><input type="checkbox" name="Irrigation">Irrigation</label></li>
                     @endif
 
-                    @if($feature[0]->Tube_Wells)
+                    @if($feature[0]->feature->Tube_Wells)
                         <li><label><input type="checkbox" checked  name="Tube_Wells">Tube Wells</label></li>
                     @else
                         <li><label><input type="checkbox" name="Tube_Wells">Tube Wells</label></li>
                     @endif
 
-                    @if($feature[0]->Accessible_by_Road)
+                    @if($feature[0]->feature->Accessible_by_Road)
                         <li><label><input type="checkbox" checked  name="Accessible_by_Road">Accessible by Road</label></li>
                     @else
                         <li><label><input type="checkbox" name="Accessible_by_Road">Accessible by Road</label></li>
                     @endif
 
-                    @if($feature[0]->Perimeter_Fencing)
+                    @if($feature[0]->feature->Perimeter_Fencing)
                         <li><label><input type="checkbox" checked  name="Perimeter_Fencing">Perimeter Fencing</label></li>
                     @else
                         <li><label><input type="checkbox" name="Perimeter_Fencing">Perimeter Fencing</label></li>
                     @endif
 
-                    @if($feature[0]->Is_Land_Fertile)
+                    @if($feature[0]->feature->Is_Land_Fertile)
                         <li><label><input type="checkbox" checked  name="Is_Land_Fertile">Is Land Fertile</label></li>
                     @else
                         <li><label><input type="checkbox" name="Is_Land_Fertile">Is Land Fertile</label></li>
                     @endif
 
-                    @if($feature[0]->Boundary_Lines)
+                    @if($feature[0]->feature->Boundary_Lines)
                         <li><label><input type="checkbox" checked  name="Boundary_Lines">Boundary Lines</label></li>
                     @else
                         <li><label><input type="checkbox" name="Boundary_Lines">Boundary Lines</label></li>
@@ -76,13 +76,13 @@
 
                 <li><label>Nearby Water Resources</label></li>
                 <li><div class="form-group width-60">
-                        <input type="text" name="Nearby_Water_Resources" value="{{ $feature[0]->Nearby_Water_Resources }}">
+                        <input type="text" name="Nearby_Water_Resources" value="{{ $feature[0]->feature->Nearby_Water_Resources }}">
 
                     </div>
                 </li>
                 <li><label>Other Land Features</label></li>
                 <li><div class="form-group width-60">
-                        <input type="text" name="Other_Land_Features" value="{{ $feature[0]->Other_Land_Features }}">
+                        <input type="text" name="Other_Land_Features" value="{{ $feature[0]->feature->Other_Land_Features }}">
 
                     </div>
                 </li>
@@ -102,32 +102,32 @@
                 <ul class="checkboxes inline half list-unstyled">
 
 
-                    @if($feature[0]->nearby_schools)
+                    @if($feature[0]->feature->nearby_schools)
                         <li><label><input type="checkbox" checked name="Nearby_Schools">Nearby Schools</label></li>
                     @else
                         <li><label><input type="checkbox" name="Nearby_Schools">Nearby Schools</label></li>
                     @endif
 
-                    @if($feature[0]->nearby_hospitals)
+                    @if($feature[0]->feature->nearby_hospitals)
                         <li><label><input type="checkbox" checked name="Nearby_Hospitals">Nearby Hospitals</label></li>
                     @else
                         <li><label><input type="checkbox" name="Nearby_Hospitals">Nearby Hospitals</label></li>
                     @endif
 
-                    @if($feature[0]->nearby_shopping_malls)
+                    @if($feature[0]->feature->nearby_shopping_malls)
                         <li><label><input type="checkbox" checked name="Nearby_Shopping_Malls">Nearby Shopping Malls</label></li>
                     @else
                         <li><label><input type="checkbox" name="Nearby_Shopping_Malls">Nearby Shopping Malls</label></li>
                     @endif
 
-                    @if($feature[0]->nearby_restaurants)
+                    @if($feature[0]->feature->nearby_restaurants)
                         <li><label><input type="checkbox" checked name="Nearby_Restaurants">Nearby Restaurants</label></li>
                     @else
                         <li><label><input type="checkbox" name="Nearby_Restaurants">Nearby Restaurants</label></li>
                     @endif
 
 
-                    @if($feature[0]->nearby_public_transport)
+                    @if($feature[0]->feature->nearby_public_transport)
                         <li><label><input type="checkbox" checked name="Nearby_Public_Transport_Service">Nearby Public Transport Service</label></li>
                     @else
                         <li><label><input type="checkbox" name="Nearby_Public_Transport_Service">Nearby Public Transport Service</label></li>
@@ -139,7 +139,7 @@
                     <li><label>Distance From Airport(kms)</label></li>
                     <li><div class="form-group width-60">
 
-                            <input type="text" name="Distance_From_Airport(kms)" value="{{ $feature[0]->distance_from_airport_kms }}">
+                            <input type="text" name="Distance_From_Airport(kms)" value="{{ $feature[0]->feature->distance_from_airport_kms }}">
                         </div></li>
                 </ul>
             </div>
@@ -167,14 +167,14 @@
         <div class="col-md-4">
             <h3>Other Facilities</h3>
             <ul class="checkboxes inline half list-unstyled">
-                @if($feature[0]->security_staff)
+                @if($feature[0]->feature->security_staff)
                     <li><label><input type="checkbox" checked  name="Security_Staff">Security Staff</label></li>
                 @else
                     <li><label><input type="checkbox" name="Security_Staff">Security Staff</label></li>
                 @endif
 
                     <li><label>Other Facilities</label></li>
-                    <li>   <div class="form-group width-60"> <input type="text" name="Other_Facilities" value="{{ $feature[0]->facilities}}">
+                    <li>   <div class="form-group width-60"> <input type="text" name="Other_Facilities" value="{{ $feature[0]->feature->facilities}}">
 
                         </div>
 

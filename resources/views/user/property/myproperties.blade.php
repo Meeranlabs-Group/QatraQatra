@@ -45,8 +45,14 @@
                                                 <div class="bg-transfer">
 
 
-                                                    @foreach($photos as $photo)
-                                                        @if( $photo->property_id == $property->id  && $photo->rank==1)
+                                                    {{--@foreach($photos as $photo)--}}
+                                                        {{--@if( $photo->property_id == $property->id  && $photo->rank==1)--}}
+                                                            {{--<img src="{{asset($photo->path)}}" class="image">--}}
+                                                        {{--@endif--}}
+                                                    {{--@endforeach--}}
+
+                                                    @foreach($property->photo as $photo)
+                                                        @if($photo->rank==1)
                                                             <img src="{{asset($photo->path)}}" class="image">
                                                         @endif
                                                     @endforeach
@@ -57,10 +63,15 @@
                                         </div>
                                         <div class="info">
                                             <a href="propertydetail/{{ $property->slug }}"><h2>{{$property->title}}</h2></a>
-                                            <figure class="location">{{$property->block_name }}</figure>
+
+                                            @if($property->society->society_name == "Other")
+                                            <figure class="location">{{$property->block->block_name }}</figure>
+                                            @else
+                                                <figure class="location">{{$property->address }}</figure>
+                                            @endif
                                             <figure class="label label-info">{{$property->property_type}}</figure>
                                             <div class="meta">
-                                                <span><i class="fa fa-bed"></i>{{$property->number_of_bedrooms}}</span>
+                                                <span><i class="fa fa-bed"></i>{{$property->feature->number_of_bedrooms}}</span>
                                                 <span class="price-info">Price: <span class="price">{{$property->price}}</span></span>
                                             </div>
                                             <!--end meta-->
@@ -69,7 +80,11 @@
                                     </td>
                                     {{--<td><div class="featured yes"><i class="fa fa-check"></i><aside></aside></div></td>--}}
                                     <td class="views">426</td>
+
+
                                     <td class="reviews">45</td>
+
+
                                     <td class="rating">
                                         @if($property->ad_status==0)
                                             <h1 class="label label-warning">Pending</h1>
@@ -79,24 +94,22 @@
                                         @else
                                             <h1 class="label label-danger">Deleted</h1>
                                         @endif
-
                                     </td>
+
 
                                     <td class="last-reservation">
 
                                         <div >
                                             @if($property->ad_status==2)
-                                                {{--profile controller--}}
                                                 <a href="/updatePropertyStatus/{{$property->slug}}">Send for Approve</a>
-
                                             @else
                                                 <a href="/editproperty/{{$property->slug}}" class="link icon"><i class="fa fa-edit"></i>Edit</a>
                                                 <a href="/deleteproperty/{{$property->slug}}" class="link icon delete"><i class="fa fa-trash"></i>Delete</a>
                                             @endif
-
                                         </div>
-                                        <!--end edit-options-->
+
                                     </td>
+
                                 </tr>
 
 
@@ -123,5 +136,6 @@
         <!--end container-->
     </div>
     <!--end page-content-->
+</div>
 @include('partials.footer')
 @include('include.foot')

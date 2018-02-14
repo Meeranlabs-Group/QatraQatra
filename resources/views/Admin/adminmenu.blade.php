@@ -42,6 +42,7 @@
 
                         {{--<li><label><a name="hotel"><h3>Deleted<span>67</span></h3></a></label></li>--}}
                         {{--<li><label><a name="hotel"><h3>Add Property</h3></a></label></li>--}}
+
                     </ul>
 
 

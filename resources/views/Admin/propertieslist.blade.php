@@ -31,27 +31,24 @@
                             <thead>
                             <tr>
                                 <th>Properties</th>
-                                {{--<th>Featured</th>--}}
                                 <th>Property Status</th>
                                 <th>Superhot</th>
-                                <th>Hot</th>
                                 <th>Remove Request</th>
                                 <th>Contact Number</th>
                                 <th>Update</th>
-                                {{--<th>Total</th>--}}
                             </tr>
                             </thead>
                             <tbody>
 
+
                             @foreach($user as $property)
+                                {!! Form::open(['url' => '/statusUpdate']) !!}
 
                                 <tr class="my-item">
                                     <td>
                                         <div class="image-wrapper">
-                                            {{--/{{ $property->id }}--}}
                                             <a href="/propertydetail/{{$property->slug}}" class="image">
                                                 <div class="bg-transfer">
-
 
                                                     @foreach($photos as $photo)
                                                         @if( $photo->property_id == $property->id  && $photo->rank==1)
@@ -59,15 +56,13 @@
                                                         @endif
                                                     @endforeach
 
-
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="info">
-                                            {{----}}
                                             <a href="/propertydetail/{{$property->slug}}"><h2>{{ str_limit(ucfirst($property->title) , $limit = 45, $end = '...') }}</h2></a>
 
-                                            <figure class="location">{{ $property->city }}</figure>
+                                            <figure class="location">{{ $property->address }}</figure>
 
                                             <figure class="label label-info">{{ $property->property_type }}</figure>
                                             <figure class="label label-info">{{ $property->user->name }}</figure>
@@ -79,15 +74,54 @@
                                         </div>
                                         <!--end info-->
                                     </td>
-                                    {{--<td><div class="featured yes"><i class="fa fa-check"></i><aside></aside></div></td>--}}
+
+
                                     <td class="views">
-                                        <select name="" id="">
-                                            <option value=""></option>
-                                        </select>    
+                                        <select name="ad_status" class="form-control" >
+
+                                            @if($property->ad_status == 0)
+                                                <option value="0" selected><p style="color: #6c0d09">Pending</p></option>
+
+                                            @elseif($property->ad_status == 1)
+                                                    <option value="1" selected>Approve</option>
+
+                                            @endif
+
+                                                @if($property->ad_status != 0)
+                                                    <option value="0">Pending</option>
+
+                                                @endif
+                                                @if($property->ad_status != 1)
+                                                    <option value="1">Approve</option>
+                                                @endif
+                                        </select>
                                     </td>
                                     {{--<td class="views">{{ $property->ad_status }}</td>--}}
-                                    <td class="reviews">{{ $property->superhot }}</td>
-                                    <td class="rating">{{ $property->hot }}</td>
+                                    {{--<td class="reviews">{{ $property->superhot }}</td>--}}
+                                    <td class="reviews">
+
+                                        <select name="superhot" class="form-control">
+
+                                            @if($property->superhot== 0)
+                                                <option value="0" selected>Make Super Hot</option>
+
+                                            @elseif($property->superhot== 1)
+                                                <option value="1" selected>Remove</option>
+
+                                            @endif
+
+                                            @if($property->superhot != 0)
+                                                <option value="0">Make Super Hot</option>
+
+                                            @endif
+                                            @if($property->superhot != 1)
+                                                <option value="1">Remove</option>
+                                            @endif
+                                        </select>
+
+
+                                    </td>
+                                    {{--<td class="rating">{{ $property->hot }}</td>--}}
                                     <td class="rating">
                                         <a href="/deleteproperty/{{$property->slug}}" class="link icon delete"><i class="fa fa-trash"></i>Delete</a>
                                     </td>
@@ -98,7 +132,7 @@
 
 
                                             {{--<a href="/editproperty/{{$property->id}}" class="link icon"><i class="fa fa-edit"></i>Edit</a>--}}
-                                            <input type="tel" name="ContactNumber"> </input>
+                                            <input type="tel" name="phone_number"> </input>
 
 
                                         </div>
@@ -108,6 +142,9 @@
                                         <button type="submit" class="btn btn-primary">Update</button>
                                     </td>
                                 </tr>
+
+
+                                {!! Form::close() !!}
 
 
                             @endforeach
@@ -127,18 +164,11 @@
             </div>
 
 
-
-
-
-
-
-            {{--<div class="center">--}}
-                {{--{{$user->render()}}--}}
-            {{--</div>--}}
             <!--end main-content-->
         </div>
         <!--end container-->
     </div>
     <!--end page-content-->
+</div>
 @include('partials.footer')
 @include('include.foot')

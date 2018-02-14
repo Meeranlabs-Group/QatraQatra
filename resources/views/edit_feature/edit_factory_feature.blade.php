@@ -16,7 +16,7 @@
                         <div class="form-group width-80">
                             <label>Built in Year</label>
                             <select  name="Built_in_Year" class="framed width-80">
-                                <option value="{{ $feature[0]->built_in_year }}">{{ $feature[0]->built_in_year }}</option>
+                                <option value="{{ $feature[0]->feature->feature->built_in_year }}">{{ $feature[0]->feature->feature->built_in_year }}</option>
                                 <option value="" disabled>Select</option>
                                 <?php
                                 for($i = 1990 ; $i <= date('Y'); $i++){
@@ -38,7 +38,7 @@
                         <div class="form-group width-80">
                             <label>Parking Spaces</label>
                             <select  name="Parking_Spaces" class="framed width-80">
-                                <option value="{{ $feature[0]->parking_space }}">{{ $feature[0]->parking_space }}</option>
+                                <option value="{{ $feature[0]->feature->feature->parking_space }}">{{ $feature[0]->feature->feature->parking_space }}</option>
                                 <option value="" disabled>Select</option>
 
                                 <option value="0">0</option>
@@ -58,7 +58,7 @@
                         <div class="form-group width-80">
                             <label>Electricity Backup</label>
                             <select name="Electricity_Backup_type" class="framed width-80">
-                                <option value="{{ $feature[0]->electricity_backup_type }}">{{ $feature[0]->electricity_backup_type }}</option>
+                                <option value="{{ $feature[0]->feature->feature->electricity_backup_type }}">{{ $feature[0]->feature->feature->electricity_backup_type }}</option>
                                 <option value="" disabled>Select</option>
                                 <option value="None">None</option>
                                 <option value="Generator">Generator</option>
@@ -84,7 +84,7 @@
                                 {{--<div class="change-button minus">--}}
                                     {{--<i class="fa fa-caret-down"></i>--}}
                                 {{--</div>--}}
-                            <input type="number"  name="Total_Floors_in_Building" value="{{ $feature[0]->total_floor_building }}">
+                            <input type="number"  name="Total_Floors_in_Building" value="{{ $feature[0]->feature->feature->total_floor_building }}">
                             {{--</div>--}}
                         </div>
                     </div>
@@ -102,14 +102,14 @@
 
 
                     <ul>
-                        {{--@if($feature[0]->view)--}}
+                        {{--@if($feature[0]->feature->feature->view)--}}
                             {{--<li><label><input type="checkbox" checked name="View">View</label></li>--}}
                         {{--@else--}}
                             {{--<li><label><input type="checkbox" name="View">View</label></li>--}}
                         {{--@endif--}}
 
 
-                        {{--@if($feature[0]->public_parking)--}}
+                        {{--@if($feature[0]->feature->feature->public_parking)--}}
                             {{--<li><label><input type="checkbox" checked name="Public_Parking">Public Parking</label></li>--}}
                         {{--@else--}}
                             {{--<li><label><input type="checkbox" name="Public_Parking">Public Parking</label></li>--}}
@@ -117,13 +117,13 @@
 
 
 
-                        @if($feature[0]->waste_disposal)
+                        @if($feature[0]->feature->feature->waste_disposal)
                             <li><label><input type="checkbox" checked name="Waste_Disposal">Waste Disposal</label></li>
                         @else
                             <li><label><input type="checkbox" name="Waste_Disposal">Waste Disposal</label></li>
                         @endif
 
-                        @if($feature[0]->elevator_or_lift)
+                        @if($feature[0]->feature->feature->elevator_or_lift)
                             <li><label><input type="checkbox" checked name="Elevator_or_Lift">Elevator_or_Lift</label></li>
                         @else
                             <li><label><input type="checkbox" name="Elevator_or_Lift">Elevator_or_Lift</label></li>
@@ -175,13 +175,13 @@
             <div  id="b&c">
                 <ul class="checkboxes inline half list-unstyled " >
 
-                    @if($feature[0]->broadband_internet_access)
+                    @if($feature[0]->feature->feature->broadband_internet_access)
                         <li><label><input type="checkbox" checked name="Broadband_Internet_Access">Broadband Internet Access</label></li>
                     @else
                         <li><label><input type="checkbox" name="Broadband_Internet_Access">Broadband Internet Access</label></li>
                     @endif
 
-                    @if($feature[0]->satellite_or_cable_tv_ready)
+                    @if($feature[0]->feature->feature->satellite_or_cable_tv_ready)
                         <li><label><input type="checkbox" checked name="Satellite_or_Cable_TV_Ready">Satellite or Cable TV Ready</label></li>
                     @else
                         <li><label><input type="checkbox" name="Satellite_or_Cable_TV_Ready">Satellite or Cable TV Ready</label></li>
@@ -192,7 +192,7 @@
 
                         <li><div class="form-group width-60">
 
-                                <input type="text" name="Other_Business_and_Communication_Facilities" value="{{ $feature[0]->other_business_and_communication}}">
+                                <input type="text" name="Other_Business_and_Communication_Facilities" value="{{ $feature[0]->feature->feature->other_business_and_communication}}">
                             </div>
                         </li>
 
@@ -211,32 +211,32 @@
 
 
 
-                    @if($feature[0]->nearby_schools)
+                    @if($feature[0]->feature->feature->nearby_schools)
                         <li><label><input type="checkbox" checked name="Nearby_Schools">Nearby Schools</label></li>
                     @else
                         <li><label><input type="checkbox" name="Nearby_Schools">Nearby Schools</label></li>
                     @endif
 
-                    @if($feature[0]->nearby_hospitals)
+                    @if($feature[0]->feature->feature->nearby_hospitals)
                         <li><label><input type="checkbox" checked name="Nearby_Hospitals">Nearby Hospitals</label></li>
                     @else
                         <li><label><input type="checkbox" name="Nearby_Hospitals">Nearby Hospitals</label></li>
                     @endif
 
-                    @if($feature[0]->nearby_shopping_malls)
+                    @if($feature[0]->feature->feature->nearby_shopping_malls)
                         <li><label><input type="checkbox" checked name="Nearby_Shopping_Malls">Nearby Shopping Malls</label></li>
                     @else
                         <li><label><input type="checkbox" name="Nearby_Shopping_Malls">Nearby Shopping Malls</label></li>
                     @endif
 
-                    @if($feature[0]->nearby_restaurants)
+                    @if($feature[0]->feature->feature->nearby_restaurants)
                         <li><label><input type="checkbox" checked name="Nearby_Restaurants">Nearby Restaurants</label></li>
                     @else
                         <li><label><input type="checkbox" name="Nearby_Restaurants">Nearby Restaurants</label></li>
                     @endif
 
 
-                    @if($feature[0]->nearby_public_transport)
+                    @if($feature[0]->feature->feature->nearby_public_transport)
                         <li><label><input type="checkbox" checked name="Nearby_Public_Transport_Service">Nearby Public Transport Service</label></li>
                     @else
                         <li><label><input type="checkbox" name="Nearby_Public_Transport_Service">Nearby Public Transport Service</label></li>
@@ -248,7 +248,7 @@
                     <li><label>Distance From Airport(kms)</label></li>
                     <li><div class="form-group width-60">
 
-                            <input type="text" name="Distance_From_Airport(kms)" value="{{ $feature[0]->distance_from_airport_kms }}">
+                            <input type="text" name="Distance_From_Airport(kms)" value="{{ $feature[0]->feature->feature->distance_from_airport_kms }}">
                         </div></li>
             </div>
             <!--end checkboxes-->
@@ -264,27 +264,27 @@
             <ul class="checkboxes inline half list-unstyled">
 
 
-                @if($feature[0]->maintenance_staff)
+                @if($feature[0]->feature->feature->maintenance_staff)
                     <li><label><input type="checkbox" checked name="Maintenance_Staff">Maintenance Staff</label></li>
                 @else
                     <li><label><input type="checkbox" name="Maintenance_Staff">Maintenance Staff</label></li>
                 @endif
 
-                @if($feature[0]->security_staff)
+                @if($feature[0]->feature->feature->security_staff)
                     <li><label><input type="checkbox" checked  name="Security_Staff">Security Staff</label></li>
                 @else
                     <li><label><input type="checkbox" name="Security_Staff">Security Staff</label></li>
                 @endif
 
 
-                    @if($feature[0]->facilities_for_disabled)
+                    @if($feature[0]->feature->feature->facilities_for_disabled)
                         <li><label><input type="checkbox" checked name="Facilities_for_Disabled">Facilities for Disabled</label></li>
                     @else
                         <li><label><input type="checkbox" name="Facilities_for_Disabled">Facilities for Disabled</label></li>
                     @endif
 
                     <li><label>Other Facilities</label></li>
-                    <li>   <div class="form-group width-60"> <input type="text" name="Other_Facilities" value="{{ $feature[0]->facilities}}">
+                    <li>   <div class="form-group width-60"> <input type="text" name="Other_Facilities" value="{{ $feature[0]->feature->feature->facilities}}">
 
                         </div>
 
@@ -303,7 +303,7 @@
             <ul class="checkboxes inline half list-unstyled">
 
 
-                @if($feature[0]->lawn_or_garden)
+                @if($feature[0]->feature->feature->lawn_or_garden)
                     <li><label><input type="checkbox" checked  name="Lawn_or_Garden">Lawn or Garden</label></li>
                 @else
                     <li><label><input type="checkbox" name="Lawn_or_Garden">Lawn or Garden</label></li>
@@ -313,7 +313,7 @@
 
 
                 <li><div class="form-group width-60">
-                        <input type="text" name="Other_Healthcare_and_Recreation_Facilities" value="{{ $feature[0]->other_health_and_recreational }}">
+                        <input type="text" name="Other_Healthcare_and_Recreation_Facilities" value="{{ $feature[0]->feature->feature->other_health_and_recreational }}">
 
                     </div>
                 </li>

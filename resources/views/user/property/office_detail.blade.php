@@ -35,36 +35,9 @@
 
 
                 <div class="main-content">
-                    <div class="title">
-                        <div class="left">
-                            <h1>{{ucfirst($data[0]->title)}}</h1>
-                            <h3><a href="#">{{$data[0]->block_name}}</a> - <a href="#">{{$data[0]->phase_name}}</a> - <a href="#">{{$data[0]->society_name}}</a> - <a href="#">{{$data[0]->city_name}}</a>(63 properties)</h3>
-                        </div>
 
-                        <div class="right">
-                            <a href="#map" class="icon scroll"><i class="fa fa-map-marker"></i>See on the map</a>
-                            			
-					 @include('user.property.phone_detail')
-                        </div>
-                    </div>
-                    <!--end title-->
-                    <section id="gallery">
-                        <div class="gallery-detail">
-                            <div class="ribbon"><div class="offer-number">{{$data[0]->purpose}}</div></div>
+                    @include('user.property.title&gallery')
 
-                            <div class="one-item-carousel">
-
-                        @foreach($photos as $photo)
-                                <div class="image">
-
-                                    <img src="{{ asset($photo->path)  }}" alt="">
-                                </div>
-                        @endforeach
-
-
-                            </div>
-                        </div>
-                    </section>
                     <h2>Description</h2>
                     <div class="row">
                         <div class="col-md-8">
@@ -75,181 +48,327 @@
 
                             </section>
                             <section id="facilities">
-                                <h2>Facilities</h2>
-                                <ul >
 
                                     <h3>Main Features</h3>
+                                <div class="row">
 
-                                    @if($data[0]->built_in_year!="")
-                                        <li>Built in Year  <strong>{{$data[0]->built_in_year}}</strong></li>
+                                    @if($data[0]->feature->built_in_year!="")
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="feature">
+                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Built in Year: <strong>{{$data[0]->feature->built_in_year}}</strong></h5>
+                                            </div>
+                                            <!--end feature-->
+                                        </div>
                                     @endif
 
-                                    @if($data[0]->total_floor_building!="")
-
-                                        <li>Total Number of Floors  <strong>{{$data[0]->total_floor_building}}</strong></li>
-                                    @endif
-
-
-                                    @if($data[0]->number_of_elevators_in_building!="")
-
-                                        <li>Number of Elevators in Building<strong>{{$data[0]->number_of_elevators_in_building}}</strong></li>
-                                    @endif
-
-                                    @if($data[0]->electricity_backup_type!="")
-                                        <li>Electricity Backup Type <strong>{{$data[0]->electricity_backup_type}}</strong></li>
-                                    @endif
-
-                                    @if($data[0]->	flooring_type!="")
-                                        <li>Flooring Type <strong>{{$data[0]->flooring_type}}</strong></li>
-                                    @endif
-
-
-
-                                    @if($data[0]->Lobby_in_Building!="")
-                                        <label><input type="checkbox" checked disabled >Lobby in Building</label>
-                                    @endif
-
-                                    @if($data[0]->double_glazed_window!="")
-                                        <label><input type="checkbox" checked disabled >Double Glazed Windows</label>
-                                    @endif
-
-
-                                    @if($data[0]->central_air_conditioning!="")
-                                        <label><input type="checkbox" checked disabled >Central Air Conditioning</label>
-                                    @endif
-
-
-                                    @if($data[0]->central_heating!="")
-                                        <label><input type="checkbox" checked disabled>Central Heating</label>
-                                    @endif
-
-                                    @if($data[0]->Service_Elevators_in_Building!="")
-                                        <label><input type="checkbox" checked disabled>Service Elevators in Building</label>
-                                    @endif
-
-
-                                    @if($data[0]->waste_disposal!="")
-                                        <label><input type="checkbox" checked disabled >Waste Disposal</label>
-                                    @endif
-
-                                    @if($data[0]->furnished!="")
-                                        <label><input type="checkbox" checked disabled name="Central_Air_Conditioning">Furnished</label>
-                                    @endif
-
-                                        @if($data[0]->Elevator_or_Lift!="")
-                                            <label><input type="checkbox" checked disabled >Elevator_or_Lift</label>
+                                        @if($data[0]->feature->electricity_backup_type!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Electricity Backup: <strong>{{$data[0]->feature->electricity_backup_type}}</strong></h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
                                         @endif
 
-                    <h3>Business and Communication</h3>
 
-                                    @if($data[0]->broadband_internet_access!="")
-                                        <label><input type="checkbox" checked disabled >Broadband Internet Access</label>
+                                        @if($data[0]->feature->total_floor_building!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Total Number of Floors: <strong>{{$data[0]->feature->total_floor_building}}</strong></h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+                                        @if($data[0]->feature->number_of_elevators_in_building!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Number of Elevators in Building: <strong>{{$data[0]->feature->number_of_elevators_in_building}}</strong></h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+
+
+
+
+                                        @if($data[0]->feature->flooring_type!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Flooring Type: <strong>{{$data[0]->feature->flooring_type}}</strong></h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+
+
+
+
+                                        @if($data[0]->feature->lobby_in_building!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Lobby in Building</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+                                        @if($data[0]->feature->double_glazed_window!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Double Glazed Windows</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+
+                                        @if($data[0]->feature->central_air_conditioning!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Central Air Conditioning</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+                                        @if($data[0]->feature->central_heating!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Central Heating</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+
+
+                                        @if($data[0]->feature->service_elevators_in_building!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Service Elevators in Building</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+                                        @if($data[0]->feature->waste_disposal!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Waste Disposal</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+                                        @if($data[0]->feature->furnished!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Furnished</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+
+                                        @if($data[0]->feature->elevator_or_lift!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Elevator or Lift</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+                                </div>
+
+                    <h2>Business and Communication</h2>
+                                <div class="row">
+
+                                    @if($data[0]->feature->broadband_internet_access!="")
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="feature">
+                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Broadband Internet Access</h5>
+                                            </div>
+                                        </div>
                                     @endif
-                                    @if($data[0]->satellite_or_cable_tv_ready!="")
-                                        <label><input type="checkbox" checked disabled >Satellite or Cable TV Ready</label>
+
+                                <!--end feature-->
+                                    @if($data[0]->feature->satellite_or_cable_tv_ready!="")
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="feature">
+                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Satellite or Cable TV Ready</h5>
+                                            </div>
+                                        </div>
                                     @endif
 
-                                    @if($data[0]->business_center_or_media_room_building!="")
-                                        <label><input type="checkbox" checked disabled >Business Center or Media Room</label>
+                                        @if($data[0]->feature->intercom!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Intercom</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+                                        @if($data[0]->feature->business_center_or_media_room_building!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Business Center or Media Room</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+
+                                        @if($data[0]->feature->confrence_room_in_building!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Conference Room in Building</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+                                        @if($data[0]->feature->atm_and_machine_in_building!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>ATM Credit Card Machines in Building</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+
+                                        @if($data[0]->feature->other_business_and_communication!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Other Business and Communication: {{$data[0]->feature->other_business_and_communication}}</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+                                </div>
+
+                                 <h2>Nearby Location</h2>
+                                    @include('user.property.nearbylocation')
+
+
+                                    <h2>Rooms</h2>
+                                <div class="row">
+
+
+
+                                    @if($data[0]->feature->number_of_store_rooms!="")
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="feature">
+                                                <h5><i class="icon_box-checked" style="color: #1fad83"></i>Number of Rooms: <strong>{{$data[0]->feature->number_of_store_rooms}}</strong></h5>
+                                            </div>
+                                            <!--end feature-->
+                                        </div>
                                     @endif
 
-                                    @if($data[0]->confrence_room_in_building!="")
-                                        <label><input type="checkbox" checked disabled >Conference Room in Building</label>
-                                    @endif
-
-
-                                    @if($data[0]->intercom!="")
-                                        <label><input type="checkbox" checked disabled >Intercom</label>
-                                    @endif
-
-
-                                    @if($data[0]->atm_and_machine_in_building!="")
-                                        <label><input type="checkbox" checked disabled >ATM Credit Card Machines in Building</label>
-                                    @endif
-
-                                    @if($data[0]->other_business_and_communication!="")
-                                        <li>Other Business and Communication<strong>{{$data[0]->other_business_and_communication}}</strong></li>
-                                    @endif
-
-
-
-                     <h3>Nearby Location</h3>
-                                @if($data[0]->nearby_schools!="")
-                                        <label><input type="checkbox" checked disabled >Nearby Schools</label>
-                                    @endif
-
-                                @if($data[0]->nearby_hospitals!="")
-                                        <label><input type="checkbox" checked disabled >Nearby Hospitals</label>
-                                    @endif
-
-                                @if($data[0]->nearby_shopping_malls!="")
-                                        <label><input type="checkbox" checked disabled >Nearby Shopping Malls</label>
-                                    @endif
-
-                                @if($data[0]->nearby_restaurants!="")
-                                        <label><input type="checkbox" checked disabled >Nearby Restaurants</label>
-                                    @endif
-                                @if($data[0]->nearby_public_transport!="")
-                                        <label><input type="checkbox" checked disabled >Nearby Public Transport Service</label>
-                                    @endif
-
-                                    @if($data[0]->distance_from_airport_kms!="")
-                                        <li>Distance From Airport <strong>{{$data[0]->distance_from_airport_kms}}</strong></li>
-                                    @endif
-
-
-
-                                    <h3>Rooms</h3>
-
-                                    <textarea disabled>Other Rooms :{{ $data[0]->other_room }}
-                                        Number of rooms: {{ $data[0]->Number_of_Rooms }}
-                                        Number of Servant Quarters : {{ $data[0]->number_of_servant_quaters }}
-                                    </textarea>
-
-                       <h3>Healthcare Recreational</h3>
-
-
-                                    @if($data[0]->lawn_or_garden!="")
-                                        <label><input type="checkbox" checked disabled >Lawn or Garden</label>
-                                    @endif
-
-
-                                    @if($data[0]->other_health_and_recreational!="")
-                                        <li>Other Healthcare and Recreation Facilities<strong>{{$data[0]->other_health_and_recreational}}</strong></li>
-                                    @endif
-
-
-
-                        <h3>Other Facilities</h3>
-
-                                    @if($data[0]->maintenance_staff!="")
-                                        <label><input type="checkbox" checked disabled >Maintenance Staff</label>
-                                    @endif
-                                    @if($data[0]->security_staff!="")
-                                        <label><input type="checkbox" checked disabled >Security Staff</label>
-                                    @endif
-
-
-
-                                    @if($data[0]->facilities_for_disabled!="")
-                                        <label><input type="checkbox" checked disabled >Facilities for Disabled</label>
+                                    @if($data[0]->feature->number_of_servant_quaters!="")
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="feature">
+                                                <h5><i class="icon_box-checked" style="color: #1fad83"></i>Servant Quarters: <strong>{{$data[0]->feature->number_of_servant_quaters}}</strong></h5>
+                                            </div>
+                                            <!--end feature-->
+                                        </div>
                                     @endif
 
 
-                                    @if($data[0]->other_facilities!="")
-                                        <li>Other Facilities<strong>{{$data[0]->other_facilities}}</strong></li>
+                                        @if($data[0]->feature->other_room!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"></i>Other Rooms: <strong>{{$data[0]->feature->other_room}}</strong></h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+
+                                </div>
+
+                       <h2>Healthcare Recreational</h2>
+                                <div class="row">
+
+
+                                    @if($data[0]->feature->lawn_or_garden!="")
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="feature">
+                                                <h5><i class="icon_box-checked" style="color: #1fad83"></i>Lawn or Garden</h5>
+                                            </div>
+                                            <!--end feature-->
+                                        </div>
                                     @endif
-                                    @if($data[0]->pet_policies!="")
-                                        <li>Pet Policies <strong>{{$data[0]->pet_policies}}</strong></li>
+
+
+                                        @if($data[0]->feature->other_health_and_recreational!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"></i>Other Healthcare and Recreation Facilities<strong>{{$data[0]->feature->other_health_and_recreational}}</strong></h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+                                </div>
+
+                        <h2>Other Facilities</h2>
+                                <div class="row">
+
+                                    @if($data[0]->feature->maintenance_staff!="")
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="feature">
+                                                <h5><i class="icon_box-checked" style="color: #1fad83"></i>Maintenance Staff</h5>
+                                            </div>
+                                            <!--end feature-->
+                                        </div>
                                     @endif
 
+                                        @if($data[0]->feature->security_staff!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"></i>Security Staff</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
 
 
+                                        @if($data[0]->feature->facilities_for_disabled!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"></i>Facilities for Disabled</h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
 
 
+                                        @if($data[0]->feature->facilities!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"></i>Other Facilities <strong>{{$data[0]->feature->facilities}}</strong></h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
 
 
-                                </ul>
+                                        @if($data[0]->feature->pet_policies!="")
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="feature">
+                                                    <h5><i class="icon_box-checked" style="color: #1fad83"></i>Pet Policies<strong>{{$data[0]->feature->pet_policies}}</strong></h5>
+                                                </div>
+                                                <!--end feature-->
+                                            </div>
+                                        @endif
+
+                                </div>
+
                             </section>
                             <section id="map">
                                 <h2>Map</h2>
@@ -264,17 +383,14 @@
                                 <aside class="box">
                                     <dl>
                                         <dt>Number of Elevators in Building</dt>
-                                        <dd>{{$data[0]->number_of_elevators_in_building}}</dd>
+                                        <dd>{{$data[0]->feature->number_of_elevators_in_building}}</dd>
                                         <dt>Total Floors in Building</dt>
-                                        <dd>{{$data[0]->total_floor_building}}</dd>
-                                        <dt>View</dt>
-                                        <dd>{{$data[0]->view}}</dd>
-
+                                        <dd>{{$data[0]->feature->total_floor_building}}</dd>
 
                                         <dt>Area:</dt>
                                         <dd>{{ $data[0]->unit_size }}-{{ $data[0]->unit_type }}</dd>
                                         <dt>Parking:</dt>
-                                        <dd>{{ $data[0]->parking_space }}</dd>
+                                        <dd>{{ $data[0]->feature->parking_space }}</dd>
 
                                     </dl>
                                 </aside>
@@ -289,18 +405,10 @@
                         <!--end col-md-4-->
                     </div>
                     <!--end row-->
-
                 </div>
-
-
                 </div>
             </div>
-
-
-
         </div>
     </div>
-
-
 @include('partials.footer')
 @include('include.foot')

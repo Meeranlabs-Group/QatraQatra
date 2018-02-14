@@ -121,4 +121,10 @@ class AdminController extends Controller
 
     }
 
+    public function update(Request $request){
+
+        echo $request['ad_status'];
+        echo $request['phone_number'];
+    }
+
 }

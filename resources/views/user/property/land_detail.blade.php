@@ -34,36 +34,7 @@
 
 
                 <div class="main-content">
-                    <div class="title">
-                        <div class="left">
-                            <h1>{{ucfirst($data[0]->title)}}</h1>
-                            <h3><a href="#">{{$data[0]->block_name}}</a> - <a href="#">{{$data[0]->phase_name}}</a> - <a href="#">{{$data[0]->society_name}}</a> - <a href="#">{{$data[0]->city_name}}</a>(63 properties)</h3>
-                        </div>
-
-                        <div class="right">
-                            <a href="#map" class="icon scroll"><i class="fa fa-map-marker"></i>See on the map</a>
-               	 @include('user.property.phone_detail')
-                        </div>
-                    </div>
-                    <!--end title-->
-                    <section id="gallery">
-                        <div class="gallery-detail">
-                            <div class="ribbon"><div class="offer-number">{{$data[0]->purpose}}</div></div>
-
-                            <div class="one-item-carousel">
-
-                                @foreach($photos as $photo)
-                                    <div class="image">
-
-                                        <img src="{{ asset($photo->path)  }}" alt="">
-                                    </div>
-                                @endforeach
-
-
-                            </div>
-                        </div>
-                    </section>
-
+                    @include('user.property.title&gallery')
 
 
                     <h2>Description</h2>
@@ -88,7 +59,7 @@
 
                                 <h2>Main Features</h2>
                                 <div class="row">
-                                    @if($data[0]->possesion!="")
+                                    @if($data[0]->feature->possesion!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Possesion</h5>
@@ -97,7 +68,7 @@
                                         </div>
                                     @endif
 
-                                    @if($data[0]->disputed!="")
+                                    @if($data[0]->feature->disputed!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Disputed</h5>
@@ -108,7 +79,7 @@
                                     @endif
 
 
-                                    @if($data[0]->electricity!="")
+                                    @if($data[0]->feature->electricity!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Electricity</h5>
@@ -118,7 +89,7 @@
                                         </div>
                                     @endif
 
-                                    @if($data[0]->sui_gas!="")
+                                    @if($data[0]->feature->sui_gas!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Sui Gas</h5>
@@ -128,7 +99,7 @@
                                         </div>
                                     @endif
 
-                                    @if($data[0]->Irrigation!="")
+                                    @if($data[0]->feature->Irrigation!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Irrigation</h5>
@@ -138,7 +109,7 @@
                                         </div>
                                     @endif
 
-                                    @if($data[0]->Tube_Wells!="")
+                                    @if($data[0]->feature->Tube_Wells!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Tube Wells</h5>
@@ -149,7 +120,7 @@
                                     @endif
 
 
-                                    @if($data[0]->Accessible_by_Road!="")
+                                    @if($data[0]->feature->Accessible_by_Road!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Accessible by Road</h5>
@@ -159,7 +130,7 @@
                                         </div>
                                     @endif
 
-                                    @if($data[0]->Perimeter_Fencing!="")
+                                    @if($data[0]->feature->Perimeter_Fencing!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Perimeter Fencing</h5>
@@ -169,7 +140,7 @@
                                         </div>
                                     @endif
 
-                                    @if($data[0]->Is_Land_Fertile!="")
+                                    @if($data[0]->feature->Is_Land_Fertile!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Is Land Fertile</h5>
@@ -179,7 +150,7 @@
                                         </div>
                                     @endif
 
-                                    @if($data[0]->Boundary_Lines!="")
+                                    @if($data[0]->feature->Boundary_Lines!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Boundary Lines</h5>
@@ -189,19 +160,19 @@
                                 @endif
 
 
-                                    @if($data[0]->Nearby_Water_Resources!="")
+                                    @if($data[0]->feature->Nearby_Water_Resources!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Near by Water Resources: <strong>{{$data[0]->Nearby_Water_Resources}}</strong></h5>
+                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Near by Water Resources: <strong>{{$data[0]->feature->Nearby_Water_Resources}}</strong></h5>
 
                                             </div>
                                         </div>
                                 @endif
 
-                                    @if($data[0]->Other_Land_Features!="")
+                                    @if($data[0]->feature->Other_Land_Features!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Other Land Features: <strong>{{$data[0]->Other_Land_Features}}</strong></h5>
+                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Other Land Features: <strong>{{$data[0]->feature->Other_Land_Features}}</strong></h5>
 
                                             </div>
                                         </div>
@@ -215,73 +186,7 @@
                                 </div>
 
                                 <h2>Nearby Location</h2>
-                                <div class="row">
-
-                                    @if($data[0]->nearby_schools!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Nearby Schools</h5>
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-
-
-                                    @if($data[0]->nearby_hospitals!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Nearby Hospitals</h5>
-                                            </div>
-                                        </div>
-                                        <!--end feature-->
-                                    @endif
-
-
-                                    @if($data[0]->nearby_shopping_malls!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Nearby Shopping Malls</h5>
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-
-
-                                    @if($data[0]->nearby_restaurants!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Nearby Restaurants</h5>
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-
-                                    @if($data[0]->nearby_public_transport!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Nearby Public Transport Service</h5>
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-
-
-                                    @if($data[0]->distance_from_airport_kms!="")
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="feature">
-
-
-                                                {{--<li>Distance From Airport <strong>{{$data[0]->distance_from_airport_kms}}</strong></li>--}}
-
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Distance From Airport {{$data[0]->distance_from_airport_kms}}</h5>
-
-                                            </div>
-                                            <!--end feature-->
-                                        </div>
-                                    @endif
-
-
-                                </div>
+                                @include('user.property.nearbylocation')
 
 
                                 <h2>Other Facilities</h2>
@@ -289,7 +194,7 @@
 
 
 
-                                    @if($data[0]->security_staff!="")
+                                    @if($data[0]->feature->security_staff!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
                                                 <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Security Staff</h5>
@@ -299,10 +204,10 @@
                                     @endif
 
 
-                                    @if($data[0]->facilities!="")
+                                    @if($data[0]->feature->facilities!="")
                                         <div class="col-md-4 col-sm-4">
                                             <div class="feature">
-                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Other Facilities: <strong>{{$data[0]->facilities}}</strong></h5>
+                                                <h5><i class="icon_box-checked" style="color: #1fad83"> </i>Other Facilities: <strong>{{$data[0]->feature->facilities}}</strong></h5>
                                             </div>
                                         </div>
                                 @endif
@@ -334,9 +239,9 @@
                                 <aside class="box">
                                     <dl>
                                         <dt>Nearby Water Resources:</dt>
-                                        <dd>{{$data[0]->Nearby_Water_Resources}}</dd>
+                                        <dd>{{$data[0]->feature->Nearby_Water_Resources}}</dd>
                                         <dt>Other Land Features</dt>
-                                        <dd>{{$data[0]->Other_Land_Features}}</dd>
+                                        <dd>{{$data[0]->feature->Other_Land_Features}}</dd>
 
 
                                         <dt>Area:</dt>
