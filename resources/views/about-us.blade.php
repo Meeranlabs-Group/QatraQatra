@@ -17,7 +17,7 @@
                             {{--<li><a href="terms-and-conditions.html">Terms & Conditions</a></li>--}}
                             <li><a href={{ url("/contact-us")}}>Contact Us</a></li>
                         </ul>
-                    </div>
+                    
 
 
                     <a href="#" class="advertising-banner">
